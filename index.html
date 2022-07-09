@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div class="preloader">
+      <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0">
+          <circle cx="50" cy="50" r="4.719" fill="none" stroke="#1d3f72" stroke-width="2">
+              <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3"
+                  keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite" />
+              <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3"
+                  keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="50" cy="50" r="27.591" fill="none" stroke="#5699d2" stroke-width="2">
+              <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3"
+                  keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite" />
+              <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3"
+                  keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite" />
+          </circle>
+      </svg>
+  </div>
+
+
     <div id="divcontainer">
       <h1>Javascript - Básico</h1>
       <small>Manipulando elementos HTML</small>
@@ -108,18 +127,56 @@
     <div id="api-cep">
       <h3>Consulta cep - utilizando API</h3>
       <form>
-        <div id="form-grid">
           <div>
             <label for="cep">CEP</label>
             <input type="text" name="cep" id="cep">
+            <input type="button" value="Consultar" onclick="consultaCep()" />
+            <div id="form-grid">
+              <div>
+                <label for="">Rua</label>
+                <input class="form-grid-item" type="text" name="logradouro" id="logradouro">
+              </div>
+  
+              <div>
+                <label for="bairro">Bairro</label>
+                <input class="form-grid-item" type="text" name="bairro" id="bairro">
+              </div>
+  
+              <div>
+                <label for="numero">Número</label>
+                <input class="form-grid-item" type="text" name="numero" id="numero">
+              </div>
+  
+              <div>
+                <label for="localidade">Localidade</label>
+                <input class="form-grid-item" type="text" name="localidade" id="localidade">
+              </div>
+  
+              <div>
+                <label for="uf">UF</label>
+                <input class="form-grid-item" type="text" name="uf" id="uf">
+              </div>
+  
+              <div>
+                <label for="complemento">Complemento</label>
+                <input class="form-grid-item" type="text" name="complemento" id="complemento">
+              </div>
+  
           </div>
+
         </div>
 
-        <input type="button" value="Consultar" onclick="consultaCep()" />
+        <input class="endereco-btn" type="button" value="cadastrar">
+    
       </form>
     </div>
     
   </div><!--final do container-->
+  <!-- importação jquerry -->
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
   </body>
 </html>

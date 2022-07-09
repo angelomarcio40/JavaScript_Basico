@@ -1,3 +1,17 @@
+// funções que são executadas quando a página é carregada
+document.addEventListener("DOMContentLoaded", function () {
+  ocultaLoader();
+});
+
+// função exibe loader
+const ExibeLoader = () => {
+  $(".preloader").fadeTo("slow", 1);
+};
+
+const ocultaLoader = () => {
+  $(".preloader").fadeOut("slow", 0);
+};
+
 // função que realiza a soma de dois numeros
 const soma = () => {
   // declara uma variável e atribui valor
@@ -41,38 +55,56 @@ const exibe = (id) => {
 };
 
 const exibeCidade = () => {
-    // captura o elemento html do estado
-    let estado = document.getElementById('estado')
-    let cidade = document.getElementById('cidade')
+  // captura o elemento html do estado
+  let estado = document.getElementById("estado");
+  let cidade = document.getElementById("cidade");
 
-    // exibe o valor do elemento capturado
-    // alert(estado.value)
-    if(estado.value == 'sp'){
-        cidade.innerHTML = `
+  // exibe o valor do elemento capturado
+  // alert(estado.value)
+  if (estado.value == "sp") {
+    cidade.innerHTML = `
         <option value="">São João da Boa Vista</option>
         <option value="">Aguaí</option>
         <option value="">Águas da prata</option>
-        `
-    }else if(estado.value == 'rj'){
+        `;
+  } else if (estado.value == "rj") {
     cidade.innerHTML = `
         <option value="">Laranjeiras</option>
         <option value="">Aguaí</option>
         <option value="">Parati</option>
-        `
-    }else if(estado.value == 'mg'){
+        `;
+  } else if (estado.value == "mg") {
     cidade.innerHTML = `
     <option value="">Andradas</option>
     <option value="">Poços de Caldas</option>
     <option value="">Belo Horizonte</option>
-    `
-    }
-}  
+    `;
+  }
+};
 
 // função que consulta o cep de uma API
-// api utilizada POSTMON
+// api utilizada POSTMON e viacep
 const consultaCep = () => {
+  let cep = document.getElementById("cep").value;
 
-    let cep = document.getElementById('cep').value
+  if (cep == "") {
+    alert("Preencha o CEP!");
+    return;
+  }
 
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-}
+  ExibeLoader();
+  const result = fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    .then((response) => response.json())
+    .then((result) => {
+      // resposta final da requisição, já validada em formato JSON
+      // manipulação do HTML
+      document.getElementById("logradouro").value = result.logradouro;
+      document.getElementById("bairro").value = result.logradouro;
+      document.getElementById("localidade").value = result.logradouro;
+      document.getElementById("uf").value = result.logradouro;
+
+      document.getElementById("numero").focus();
+
+      ocultaLoader();
+    });
+};

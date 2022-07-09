@@ -3,6 +3,21 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Sans-serif;
 }
 
+.preloader {
+    align-items: center;
+    background: rgb(23, 22, 22);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity 0.3s linear;
+    width: 100%;
+    z-index: 9999;
+}
+
+
 #tecnologias{
     margin-top: 20px;
     display: grid;
@@ -23,7 +38,32 @@
     padding: 8px 12px;
     border-radius: 4px;
     background-color: #04aa6d;
-    color: #FFF;
+    color: #000;
     font-weight: bold;
     width: 140px;
+}
+
+#form-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-grid-item{
+    width: 100%;
+    padding: 8px 12px;
+}
+
+.endereco-btn{
+    background-color: #008CBA;
+    border: none;
+    color: #ffff;
+    padding: 10pd 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
